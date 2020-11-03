@@ -2,7 +2,7 @@
 package main
 
 import (
-    "github.com/ronnathaniel/chain/chain"
+    "github.com/ronnathaniel/blockchain-network/chain"
 )
 
 
