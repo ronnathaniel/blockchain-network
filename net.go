@@ -7,5 +7,5 @@ import (
 
 
 func main() {
-    chain.RunNet()
+    samo.RunNet()
 }

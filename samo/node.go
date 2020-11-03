@@ -2,6 +2,7 @@
 package samo
 
 import (
+    "fmt"
     "github.com/levigross/grequests"
 )
 
