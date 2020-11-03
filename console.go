@@ -3,7 +3,7 @@ package main
 
 import (
     "github.com/abiosoft/ishell"
-    "github.com/ronnathaniel/blockchain-network/chain"
+    "github.com/ronnathaniel/blockchain-network/samo"
 )
 
 
