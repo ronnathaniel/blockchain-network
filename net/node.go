@@ -1,5 +1,5 @@
 
-package samo
+package net
 
 import (
     "fmt"
@@ -9,17 +9,17 @@ import (
 type Node struct {
 
     private_k string
-    public_k string
+    Public_k string
 }
 
 func newNode() *Node {
     return &Node {
-        public_k: genKey(),
+        Public_k: genKey(),
         private_k: genKey(),
     }
 }
 
-func Connect() {
+func Connect(client *Node) {
 
     resp, err := grequests.Get("http://localhost:8080/connect", nil)
 
@@ -27,6 +27,6 @@ func Connect() {
         fmt.Println("error in request to connect", err)
     }
 
-    fmt.Println(resp.String())
+    resp.JSON(client)
 
 }

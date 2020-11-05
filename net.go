@@ -2,10 +2,10 @@
 package main
 
 import (
-    "github.com/ronnathaniel/blockchain-network/samo"
+    "github.com/ronnathaniel/blockchain-network/net"
 )
 
 
 func main() {
-    samo.RunNet()
+    net.RunNet()
 }

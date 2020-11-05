@@ -1,38 +1,41 @@
 
-package samo
+package net
 
 import (
-    // "net"
     "fmt"
+    // "strings"
+
     "github.com/gin-gonic/gin"
-    "strings"
-    "github.com/satori/go.uuid"
 )
 
 
 
+
+
+
 func RunNet () {
-    net := NewNet()
-    r := gin.Default()
-    netPaths(r, net)
-    r.Run(":8080")
+    net := DefaultNet()
+    // r := gin.Default()
+    netPaths(net)
+    net.Run(":8080")
 }
 
-func netPaths (r *gin.Engine, net *Net){
-    r.GET("/connect", func(c *gin.Context) {
-        ConnectNode(c, net)
+func netPaths (net *Net){
+    net.Engine.GET("/connect", func(c *gin.Context) {
+        AddNode(c, net)
     })
 }
 
 
-func ConnectNode(c *gin.Context, net *Net) {
+func AddNode(c *gin.Context, net *Net) {
     node := newNode()
     net.AddNode(node);
 
     // c.String(200, fmt.Sprintf("public_k - %s\n", node.public_k))
-    c.String(200, "Welcome to SamoChain :-)\n")
+    c.String(200, "Welcome to SamoChain :-)")
+    c.String(200, "Please keep these credentials private:\n")
     c.JSON(200, gin.H{
-        "public_k": node.public_k,
+        "public_k": node.Public_k,
         "private_k": node.private_k,
     })
 }
@@ -40,27 +43,26 @@ func ConnectNode(c *gin.Context, net *Net) {
 
 type Net struct {
     Nodes []*Node
+    Engine *gin.Engine
 }
 
-func NewNet() *Net {
-    return &Net{}
+func DefaultNet() *Net {
+    return &Net{
+        Nodes: []*Node{},
+        Engine: gin.Default(),
+    }
+}
+
+
+func (net *Net) Run(port string) {
+    // param port:
+    //   format - ":${port}"
+    net.Engine.Run(port)
 }
 
 func (net *Net) AddNode(node *Node) {
     net.Nodes = append(net.Nodes, node)
     net.PrintNodes()
-}
-
-
-func genKey() string {
-
-    uuid_v4 := uuid.Must(uuid.NewV4(), nil)
-    id := fmt.Sprintf("%s", uuid_v4)
-    key := strings.ReplaceAll(id, "-", "")
-
-    // fmt.Printf("private key -- 0x%x", key)
-    key = fmt.Sprintf("0x%s", key)
-    return key
 }
 
 
