@@ -9,21 +9,32 @@ import (
 type Node struct {
 
     private_k string
-    Public_k string
+    public_k string
 }
 
 func DefaultNode() *Node {
     return &Node {
-        Public_k: genKey(),
+        public_k: genKey(),
         private_k: genKey(),
     }
 }
 
 func EmptyNode() *Node {
     return &Node {
-        Public_k: nil,
-        private_k: nil,
+        public_k: "",
+        private_k: "",
     }
+}
+
+func CustomNode(public_k, private_k string) *Node {
+    return &Node {
+        public_k: public_k,
+        private_k: private_k,
+    }
+}
+
+func (node *Node) Public_k() string {
+    return node.public_k
 }
 
 func Connect() *grequests.Response {

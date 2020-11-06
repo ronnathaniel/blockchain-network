@@ -32,10 +32,10 @@ func AddNode(c *gin.Context, net *Net) {
     net.AddNode(node);
 
     // c.String(200, fmt.Sprintf("public_k - %s\n", node.public_k))
-    c.String(200, "Welcome to SamoChain :-)")
-    c.String(200, "Please keep these credentials private:\n")
+    // c.String(200, "Welcome to SamoChain :-)")
+    // c.String(200, "Please keep these credentials private:\n")
     c.JSON(200, gin.H{
-        "public_k": node.Public_k,
+        "public_k": node.public_k,
         "private_k": node.private_k,
     })
 }
