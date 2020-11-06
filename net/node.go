@@ -19,7 +19,7 @@ func newNode() *Node {
     }
 }
 
-func Connect(client *Node) {
+func Connect() *grequests.Response {
 
     resp, err := grequests.Get("http://localhost:8080/connect", nil)
 
@@ -27,6 +27,6 @@ func Connect(client *Node) {
         fmt.Println("error in request to connect", err)
     }
 
-    resp.JSON(client)
+    return resp
 
 }
