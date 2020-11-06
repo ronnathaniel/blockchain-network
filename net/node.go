@@ -12,10 +12,17 @@ type Node struct {
     Public_k string
 }
 
-func newNode() *Node {
+func DefaultNode() *Node {
     return &Node {
         Public_k: genKey(),
         private_k: genKey(),
+    }
+}
+
+func EmptyNode() *Node {
+    return &Node {
+        Public_k: nil,
+        private_k: nil,
     }
 }
 

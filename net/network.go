@@ -28,7 +28,7 @@ func netPaths (net *Net){
 
 
 func AddNode(c *gin.Context, net *Net) {
-    node := newNode()
+    node := DefaultNode()
     net.AddNode(node);
 
     // c.String(200, fmt.Sprintf("public_k - %s\n", node.public_k))
