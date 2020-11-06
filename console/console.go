@@ -12,10 +12,17 @@ type console struct {
     credentials *net.Node
 }
 
-func NewConsole() *console {
-    return &console{
-        shell: shell.New(),
+func emptyConsole() *console {
+    return &console {
+        shell: ishell.New(),
         credentials: net.EmptyNode(),
+    }
+}
+
+func customConsole(public_k, private_k string) *console {
+    return &console {
+        shell: ishell.New(),
+        credentials: net.CustomNode(public_k, private_k),
     }
 }
 

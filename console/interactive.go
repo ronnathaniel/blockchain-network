@@ -1,5 +1,5 @@
 
-package client
+package console
 
 import (
     "github.com/abiosoft/ishell"
@@ -9,28 +9,28 @@ import (
 func RunConsole() {
 
     // console := ishell.New()
-    c := NewConsole()
+    c := emptyConsole()
     initConsole(c)
-    c.Run()
+    c.run()
 }
 
-func initConsole(shell *ishell.Shell) {
-    shell.Println("\nSamoChain Interactive Console")
-    shell.Println("SamoChain is a subsidiary of SamoCorp\n")
-    addConsoleCommands(shell)
+func initConsole(c *console) {
+    c.shell.Println("\nSamoChain Interactive Console")
+    c.shell.Println("SamoChain is a subsidiary of SamoCorp\n")
+    addConsoleCommands(c)
 }
 
-func addConsoleCommands(shell *ishell.Shell) {
-    shell.AddCmd(&ishell.Cmd{
+func addConsoleCommands(c *console) {
+    c.shell.AddCmd(&ishell.Cmd{
         Name: "create",
         Help: "creates account & wallet at public_k address",
-        Func: func(c *ishell.Context) {
+        Func: func(*ishell.Context) {
             resp := net.Connect()
-            // shell.Println(resp.Bytes())
+            c.shell.Println(resp.String())
         },
     })
 
-    shell.AddCmd(&ishell.Cmd{
+    c.shell.AddCmd(&ishell.Cmd{
         Name: "address",
         Help: "address - returns address of your account",
         Func: func(*ishell.Context) {
