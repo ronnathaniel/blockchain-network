@@ -21,10 +21,11 @@ func initConsole(shell *ishell.Shell) {
 
 func addConsoleCommands(shell *ishell.Shell) {
     shell.AddCmd(&ishell.Cmd{
-        Name: "connect",
-        Help: "connect - joins SamoNet as a guest user",
+        Name: "create",
+        Help: "creates account & wallet at public_k address",
         Func: func(c *ishell.Context) {
-            net.Connect()
+            resp := net.Connect()
+            shell.Println(resp.Bytes())
         },
     })
 
