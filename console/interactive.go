@@ -8,9 +8,10 @@ import (
 
 func RunConsole() {
 
-    console := ishell.New()
-    initConsole(console)
-    console.Run()
+    // console := ishell.New()
+    c := NewConsole()
+    initConsole(c)
+    c.Run()
 }
 
 func initConsole(shell *ishell.Shell) {
@@ -25,7 +26,7 @@ func addConsoleCommands(shell *ishell.Shell) {
         Help: "creates account & wallet at public_k address",
         Func: func(c *ishell.Context) {
             resp := net.Connect()
-            shell.Println(resp.Bytes())
+            // shell.Println(resp.Bytes())
         },
     })
 
