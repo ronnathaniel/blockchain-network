@@ -8,8 +8,8 @@ import (
 
 type Node struct {
 
-    private_k string
-    public_k string
+    private_k   string  `json:"private_k"`
+    public_k    string  `json:"public_k"`
 }
 
 func DefaultNode() *Node {
