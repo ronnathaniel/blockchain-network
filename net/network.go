@@ -72,16 +72,17 @@ func (net *Net) NodeCount() int {
 
 
 func (net *Net) PrintNodes() {
-    fmt.Printf("there are %d nodes connected\n", net.NodeCount())
+    // fmt.Printf("there are %d nodes connected\n", net.NodeCount())
+    for i, node := range(net.Nodes) {
+        fmt.Println(i, " - ", node)
+    }
 }
 
 func (net *Net) GetNodes() []*Node {
-    // var nodes []*Node
-    nodes := []*Node{}
-
-    for _, n := range net.Nodes {
-        nodes = append(nodes, n)
-    }
-
-    return nodes
+    // nodes := []*Node{}
+    // for _, n := range net.Nodes {
+    //     nodes = append(nodes, n)
+    // }
+    // return nodes
+    return net.Nodes
 }
