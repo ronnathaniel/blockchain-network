@@ -1,0 +1,12 @@
+
+add deffered node disconnect request on exit. This alerts the server of the
+node leaving, allowing it to correctly update the network
+
+Add network occasional ghost requests to all network nodes, ensuring that
+they are all still on and connected
+
+create currency, some sort of value at a reachable public_k address
+
+allow sending of currency from one public_k address to another
+
+verifiers confirm transaction, append new block to ledger blockchain
